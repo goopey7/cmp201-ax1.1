@@ -29,6 +29,10 @@ int main()
 	llChar->Insert('c');
 	llChar->Reverse();		// reverse in place.
 	std::cout << "expecting [c, b, a], got: " << llChar->ToString();
+	ll->Reverse();
+	std::cout << "expecting [10, 20, 5], got: " << ll->ToString();
+	delete ll;
+	delete llChar;
 	return 0;
 }
 
