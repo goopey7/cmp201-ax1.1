@@ -27,6 +27,10 @@ template<class T>
 LinkedList<T>::~LinkedList()
 {
 	// TODO: Wipe out all nodes
+	if(head == nullptr)
+	{
+		return;
+	}
 	for(int i=0;i<Size();i++)
 	{
 		Remove(Get(i)->data);
@@ -67,6 +71,11 @@ void LinkedList<T>::Remove(T n)
 	//		1 mark for removal from after head
 	//			0.5 marks for correct forward referencing (i.e. ->next is correct)
 	//			0.5 marks for correct backward referencing (i.e. ->prev is correct)
+	if(head == nullptr)
+	{
+		return;
+	}
+
 	if(head->data == n)
 	{
 		if(Size() == 1)
@@ -107,10 +116,14 @@ template<class T>
 Node<T>* LinkedList<T>::Get(int index)
 {
 	// TODO: Unassessed.
+	if(head == nullptr)
+	{
+		return nullptr;
+	}
 	Node<T>* nodeToReturn = head;
 	for(int i=0;i<index; i++)
 	{
-		nodeToReturn=head->next;
+		nodeToReturn=nodeToReturn->next;
 	}
 	return nodeToReturn;
 }
@@ -123,6 +136,11 @@ void LinkedList<T>::Reverse()
 	// TODO: Assessed, 2 marks
 	//		1 mark for test with ints
 	//		1 mark for test with std:strings
+
+	if(head == nullptr)
+	{
+		return;
+	}
 
 	Node<T>* tail = GetTail();
 
@@ -168,10 +186,14 @@ std::vector<T> LinkedList<T>::ToVector()
 
 	// TODO: Unassessed.
 	// Use lecture 3B on vectors for reference on declaring and inserting.
+	if(head == nullptr)
+	{
+		return {};
+	}
 	std::vector<T> returnVector;
 	for(int i=0;i<Size();i++)
 	{
-		returnVector.push_back(Get(i));
+		returnVector.push_back(Get(i)->data);
 	}
 	return returnVector;
 }
@@ -182,6 +204,10 @@ Node<T>* LinkedList<T>::GetTail()
 {
 	// TODO: Unassessed.
 	// this will be very short (remember we're DOUBLY linked)
+	if(head == nullptr)
+	{
+		return nullptr;
+	}
 	return head->prev;
 }
 

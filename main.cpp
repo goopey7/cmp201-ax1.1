@@ -33,6 +33,15 @@ int main()
 	std::cout << "expecting [10, 20, 5], got: " << ll->ToString();
 	delete ll;
 	delete llChar;
+
+	// Test 4: Empty List
+	LinkedList<int>* el = new LinkedList<int>();
+	el->Remove(4);
+	el->Reverse();
+	el->Get(2);
+	el->Size();
+	std::vector<int> empty = el->ToVector();
+	std::cout << "EMPTY LIST: " << el->ToString();
 	return 0;
 }
 
